@@ -78,8 +78,6 @@ def test_subtrair():
     assert resultado_obtido == resultado_esperado
 
     #
-
-    ##
     #
     #
     #

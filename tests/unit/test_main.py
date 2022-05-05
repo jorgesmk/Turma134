@@ -1,6 +1,7 @@
 from main import somar, dividir, multiplicar, subtrair
 
 
+
 def teste_somar():
     # 1 - Configura
     numero_a = 10

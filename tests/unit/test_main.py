@@ -76,3 +76,4 @@ def test_subtrair():
 
     # 3 - Valida
     assert resultado_obtido == resultado_esperado
+

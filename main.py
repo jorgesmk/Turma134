@@ -1,7 +1,3 @@
-import pytest
-
-
-
 def imprimir_oi(nome):
     print(f'Oi, {nome}')
 

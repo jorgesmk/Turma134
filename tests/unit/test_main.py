@@ -100,4 +100,3 @@ def teste_somar_leitura_de_lista(numero_a, numero_b, resultado_esperado):
 
     # 3 - Valida
     assert resultado_obtido == resultado_esperado
-           

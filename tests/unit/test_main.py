@@ -89,7 +89,6 @@ lista_de_valores = [
     (6, -3, 3)
 ]
 
-
 @pytest.mark.parametrize('numero_a, numero_b, resultado_esperado', lista_de_valores)
 def teste_somar_leitura_de_lista(numero_a, numero_b, resultado_esperado):
     # 1 - Configura

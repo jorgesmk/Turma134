@@ -79,6 +79,7 @@ def test_subtrair():
     # 3 - Valida
     assert resultado_obtido == resultado_esperado
 
+
 # Lista para uso como massa de teste
 lista_de_valores = [
     (8, 7, 15),
@@ -87,6 +88,7 @@ lista_de_valores = [
     (-5, 12, 7),
     (6, -3, 3)
 ]
+
 
 @pytest.mark.parametrize('numero_a, numero_b, resultado_esperado', lista_de_valores)
 def teste_somar_leitura_de_lista(numero_a, numero_b, resultado_esperado):

@@ -1,0 +1,4 @@
+numero_a,numero_b,resultado_esperado
+10, 5, 5
+100, 99, 1
+1000, 500, 500

@@ -1,4 +1,6 @@
 # bibliotecas
+import json
+
 import pytest
 import requests
 
@@ -31,6 +33,34 @@ def test_incluir_pet():
     print(resultado_obtido)
     corpo_do_resultado_obtido = resultado_obtido.json()
     print(corpo_do_resultado_obtido)
+
+    assert resultado_obtido.status_code == status_code_esperado
+    assert corpo_do_resultado_obtido ['id'] == pet_id_esperado
+    assert corpo_do_resultado_obtido ['name'] == pet_nome_esperado
+    assert corpo_do_resultado_obtido['category']['name'] == pet_nome_categoria_esperado
+    assert corpo_do_resultado_obtido['tags'][0]['name'] == pet_nome_tag_esperado
+
+def test_consulta_pet():
+    #configura
+    #entrada
+    pet_id = '3771393'
+
+    #Resultados esperados
+    status_code_esperado = 200
+    pet_id_esperado = 3771393
+    pet_nome_esperado = "Bud"
+    pet_nome_categoria_esperado = "cachorro"
+    pet_nome_tag_esperado = "vacinado"
+
+    #executa
+    resultado_obtido = requests.get(
+        url=url + '/' + pet_id,
+        headers=headers
+    )
+    #valida
+    print(resultado_obtido)
+    corpo_do_resultado_obtido = resultado_obtido.json()
+    print(json.dumps(corpo_do_resultado_obtido, indent=4))
 
     assert resultado_obtido.status_code == status_code_esperado
     assert corpo_do_resultado_obtido ['id'] == pet_id_esperado

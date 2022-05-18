@@ -67,3 +67,28 @@ def test_consulta_pet():
     assert corpo_do_resultado_obtido ['name'] == pet_nome_esperado
     assert corpo_do_resultado_obtido['category']['name'] == pet_nome_categoria_esperado
     assert corpo_do_resultado_obtido['tags'][0]['name'] == pet_nome_tag_esperado
+
+def test_alterar_pet():
+    # configura
+    # dados de entrada provem do pet2.jason
+
+    # Resultados esperados
+    status_code_esperado = 200
+    tipo_esperado = 'unknown'
+    mensagem_esperada = '3771393'
+
+    # Executa
+    resultado_obtido = requests.put(
+        url=url,
+        headers=headers,
+        data=open('C:\\Users\\lynna\\PycharmProjects\\134inicial\\vendors\\json\\pet2.json')
+    )
+    # Valida
+    print(resultado_obtido)
+    corpo_do_resultado_obtido = resultado_obtido.json()
+    print(json.dumps(corpo_do_resultado_obtido, indent=4))
+"""
+    assert resultado_obtido == status_code_esperado
+    assert corpo_do_resultado_obtido['code'] == str(status_code_esperado)
+    assert corpo_do_resultado_obtido['type'] == tipo_esperado
+    assert corpo_do_resultado_obtido['message'] == mensagem_esperada

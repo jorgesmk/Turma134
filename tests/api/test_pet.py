@@ -8,14 +8,13 @@ import requests
 url = 'https://petstore.swagger.io/v2/pet'
 headers = {'Content-Type': 'application/json'}
 
+# definições das funcões (defs)
 
-# Defininições das funções (defs)
+def teste_incluir_pet():
+    # Configura / Prepara
+    # Dados de entrada provem do pet1.json
 
-def test_incluir_pet():
-    # Configura
-    # dados de entrada provem do pet.jason
-
-    # Resultados esperados
+    # Resultados Esperados
     status_code_esperado = 200
     pet_id_esperado = 3771393
     pet_nome_esperado = "Bud"
@@ -35,60 +34,69 @@ def test_incluir_pet():
     print(corpo_do_resultado_obtido)
 
     assert resultado_obtido.status_code == status_code_esperado
-    assert corpo_do_resultado_obtido ['id'] == pet_id_esperado
-    assert corpo_do_resultado_obtido ['name'] == pet_nome_esperado
+    assert corpo_do_resultado_obtido['id'] == pet_id_esperado
+    assert corpo_do_resultado_obtido['name'] == pet_nome_esperado
     assert corpo_do_resultado_obtido['category']['name'] == pet_nome_categoria_esperado
     assert corpo_do_resultado_obtido['tags'][0]['name'] == pet_nome_tag_esperado
 
-def test_consulta_pet():
-    #configura
-    #entrada
-    pet_id = '3771393'
 
-    #Resultados esperados
+def teste_consultar_pet():
+    # Configura
+    # Entrada
+    pet_id = '1732181'
+
+    # Resultados Esperados
     status_code_esperado = 200
     pet_id_esperado = 3771393
     pet_nome_esperado = "Bud"
     pet_nome_categoria_esperado = "cachorro"
     pet_nome_tag_esperado = "vacinado"
 
-    #executa
+    # Executa
     resultado_obtido = requests.get(
         url=url + '/' + pet_id,
         headers=headers
     )
-    #valida
+
+    # Valida
     print(resultado_obtido)
     corpo_do_resultado_obtido = resultado_obtido.json()
     print(json.dumps(corpo_do_resultado_obtido, indent=4))
 
+
     assert resultado_obtido.status_code == status_code_esperado
-    assert corpo_do_resultado_obtido ['id'] == pet_id_esperado
-    assert corpo_do_resultado_obtido ['name'] == pet_nome_esperado
+    assert corpo_do_resultado_obtido['id'] == pet_id_esperado
+    assert corpo_do_resultado_obtido['name'] == pet_nome_esperado
     assert corpo_do_resultado_obtido['category']['name'] == pet_nome_categoria_esperado
     assert corpo_do_resultado_obtido['tags'][0]['name'] == pet_nome_tag_esperado
 
-def test_alterar_pet():
-    # configura
-    # dados de entrada provem do pet2.jason
+def teste_alterar_pet():
+    # Configura
+    # Dados de Entrada virão do pet2.json
 
-    # Resultados esperados
+    # Resultados Esperados
     status_code_esperado = 200
-    tipo_esperado = 'unknown'
-    mensagem_esperada = '3771393'
+    pet_id_esperado = 3771393
+    pet_nome_esperado = "Bud"
+    pet_nome_categoria_esperado = "cachorro"
+    pet_nome_tag_esperado = "vacinado"
+    pet_status_esperado = 'available'
 
     # Executa
     resultado_obtido = requests.put(
         url=url,
         headers=headers,
-        data=open('C:\\Users\\lynna\\PycharmProjects\\134inicial\\vendors\\json\\pet2.json')
+        data=open('C:\\Users\\lynna\\PycharmProjects\\134inicial\\vendors\\json\\pet1.json')
     )
+
     # Valida
     print(resultado_obtido)
     corpo_do_resultado_obtido = resultado_obtido.json()
     print(json.dumps(corpo_do_resultado_obtido, indent=4))
-"""
-    assert resultado_obtido == status_code_esperado
-    assert corpo_do_resultado_obtido['code'] == str(status_code_esperado)
-    assert corpo_do_resultado_obtido['type'] == tipo_esperado
-    assert corpo_do_resultado_obtido['message'] == mensagem_esperada
+
+    assert resultado_obtido.status_code == status_code_esperado
+    assert corpo_do_resultado_obtido['id'] == pet_id_esperado
+    assert corpo_do_resultado_obtido['name'] == pet_nome_esperado
+    assert corpo_do_resultado_obtido['category']['name'] == pet_nome_categoria_esperado
+    assert corpo_do_resultado_obtido['tags'][0]['name'] == pet_nome_tag_esperado
+    assert corpo_do_resultado_obtido['status'] == pet_status_esperado

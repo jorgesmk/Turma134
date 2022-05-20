@@ -1,0 +1,5 @@
+pet_id,category_id,category_name,pet_name,tags_id,tags_name,status
+379301,1,cachorro,Bud,1,vacinado,available
+379302,2,gato,Ozzy,1,castrado,available
+379303,3,peixe,Azul,3,registrado,available
+379304,2,gato,Cacau,1,vacinado,available

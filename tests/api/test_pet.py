@@ -1,5 +1,6 @@
 # bibliotecas
 import json
+import os
 
 import pytest
 import requests
@@ -85,10 +86,11 @@ def teste_alterar_pet():
     pet_status_esperado = 'available'
 
     # Executa
+    caminho = os.path.abspath(__file__ + "/../../../") + os.sep + 'vendors' + os.sep + 'json' + os.sep
     resultado_obtido = requests.put(
         url=url,
         headers=headers,
-        data=open('C:\\Users\\lynna\\PycharmProjects\\134inicial\\vendors\\json\\pet1.json')
+        data=open(caminho + 'pet1.json')
     )
 
     # Valida
@@ -106,12 +108,12 @@ def teste_alterar_pet():
 def teste_excluir_pet():
     # Configura
     # Dados de Entrada
-    pet_id = '3771393'
+    pet_id = '379301'
 
     # Resultados Esperado
     status_code_esperado = 200
     tipo_esperado = 'unknown'
-    mensagem_esperada = '3771393'
+    mensagem_esperada = '379301'
 
     # Executa
     resultado_obtido = requests.delete(

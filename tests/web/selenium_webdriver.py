@@ -46,6 +46,10 @@ class Testes:
         self.driver.find_element(By.CSS_SELECTOR, ".btn-primary").click()
 
         # Pagina lista de passagens
+        # Executa / Valida
+        assert self.driver.find_element(By.TAG_NAME, 'h3').text == "Flights from São Paolo to New York:"
+
+        self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(1) .btn").click()
 
         # Pagina de Compras
 

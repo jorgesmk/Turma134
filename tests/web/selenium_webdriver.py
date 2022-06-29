@@ -2,6 +2,8 @@
 # Biblioteca / Imports
 
 # Dados de Entrada
+from datetime import time
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
@@ -51,8 +53,16 @@ class Testes:
 
         self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(1) .btn").click()
 
-        # Pagina de Compras
+        # Pagina de Compra
+        self.driver.find_element(By.ID, 'inputName').send_keys(primeiro_nome)
+        dropdown = self.driver.find_element(By.ID, 'cardType')
+        dropdown.click()
+        dropdown.find_element(By.XPATH, f'//option[ .= "{bandeira}"]').click()
+        self.driver.find_element(By.ID, 'rememberMe').click()
+        self.driver.find_element(By.CSS_SELECTOR, 'input.btn-primary').click()
 
         # Pagina de Obrigado
+        # Valida
+        assert self.driver.find_element(By.TAG_NAME, 'h1').text == mensagem_agradecimento_esperada
+        assert self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(3) > td:nth-child(2)").text == "555 USD"
 
-    # Valida

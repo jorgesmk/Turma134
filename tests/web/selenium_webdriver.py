@@ -62,7 +62,7 @@ class Testes:
         self.driver.find_element(By.CSS_SELECTOR, 'input.btn-primary').click()
 
         # Pagina de Obrigado
-        # Valida
+        # Valida..
         assert self.driver.find_element(By.TAG_NAME, 'h1').text == mensagem_agradecimento_esperada
         assert self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(3) > td:nth-child(2)").text == "555 USD"
 
